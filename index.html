@@ -11,7 +11,6 @@
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-    /* (all your existing styles – keep them exactly as before) */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #f5f7fb; color: #1e293b; font-size: 15px; line-height: 1.5; }
 
@@ -19,12 +18,12 @@
     .login-container { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: linear-gradient(145deg, #3b82f6 0%, #8b5cf6 100%); padding: 1rem; }
     .login-box { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); width: 100%; max-width: 380px; padding: 2rem 1.5rem; border-radius: 28px; box-shadow: 0 20px 35px rgba(0,0,0,0.2); }
     .login-box h1 { font-size: 2rem; font-weight: 700; margin-bottom: 2rem; text-align: center; color: #1e293b; }
-    
+
     .form-group { margin-bottom: 1.5rem; position: relative; }
     .form-group label { display: block; font-weight: 500; margin-bottom: 0.5rem; color: #334155; }
     .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem; border: 1px solid #cbd5e1; border-radius: 18px; font-size: 1rem; background: white; transition: border 0.2s; }
     .form-group input:focus, .form-group textarea:focus { border-color: #3b82f6; outline: none; }
-    
+
     /* AI Button Styles */
     .ai-btn { position: absolute; top: 0; right: 0; background: linear-gradient(135deg, #6366f1, #a855f7); color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px; box-shadow: 0 4px 10px rgba(168, 85, 247, 0.3); transition: transform 0.2s; }
     .ai-btn:hover { transform: scale(1.05); }
@@ -74,11 +73,11 @@
     .content-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
     .content-header h2 { font-size: 1.6rem; font-weight: 700; color: #0f172a; }
     .btn-add { background: #3b82f6; color: white; border: none; width: 52px; height: 52px; border-radius: 30px; font-size: 1.6rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 12px rgba(59,130,246,0.3); cursor: pointer; }
-    
+
     .product-list, .category-list, .order-list { display: flex; flex-direction: column; gap: 1rem; }
     .product-card, .category-item { background: white; border-radius: 22px; padding: 1rem; border: 1px solid #edf2f7; display: flex; align-items: center; gap: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
     .product-img, .category-img { width: 70px; height: 70px; border-radius: 18px; object-fit: cover; background: #f1f5f9; }
-    .product-details, .category-name { flex: 1; }
+    .product-details { flex: 1; }
     .product-details h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.2rem; }
     .product-details .product-category { font-size: 0.8rem; color: #64748b; margin-bottom: 0.3rem; }
     .product-details .product-price { font-weight: 700; color: #3b82f6; }
@@ -95,10 +94,15 @@
     input:checked + .slider { background-color: #3b82f6; }
     input:checked + .slider:before { transform: translateX(24px); }
 
-    /* Sub Category Item Styles */
+    /* Sub Category Item Styles (updated) */
     .sub-cat-item { display: flex; justify-content: space-between; align-items: center; background: white; padding: 12px; border-radius: 12px; margin-bottom: 8px; border: 1px solid #e2e8f0; }
-    .sub-cat-item span { font-weight: 500; }
-    .sub-cat-delete { color: #ef4444; background: none; border: none; font-size: 1.1rem; cursor: pointer; }
+    .sub-cat-actions { display: flex; gap: 0.3rem; }
+    .sub-cat-edit, .sub-cat-delete, .sub-cat-save, .sub-cat-cancel { background: none; border: none; font-size: 1rem; cursor: pointer; padding: 0.3rem 0.5rem; border-radius: 8px; }
+    .sub-cat-edit { color: #3b82f6; }
+    .sub-cat-delete { color: #ef4444; }
+    .sub-cat-save { color: #10b981; }
+    .sub-cat-cancel { color: #6b7280; }
+    .edit-sub-cat-input { flex: 1; padding: 0.5rem; border-radius: 8px; border: 1px solid #ccc; font-size: 0.9rem; }
 
     /* Modal */
     .modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: flex-end; justify-content: center; opacity: 0; visibility: hidden; transition: 0.2s; z-index: 200; }
@@ -112,32 +116,15 @@
     .image-previews { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1rem 0; }
     .preview-item { position: relative; width: 80px; height: 80px; border-radius: 18px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
     .preview-item img { width: 100%; height: 100%; object-fit: cover; }
-    
-    .delete-preview { 
-        position: absolute; 
-        top: 2px; 
-        right: 2px; 
-        background: rgba(239, 68, 68, 0.9); /* Red background */
-        color: white; 
-        border: none; 
-        border-radius: 50%; 
-        width: 24px; 
-        height: 24px; 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        z-index: 10;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
+    .delete-preview { position: absolute; top: 2px; right: 2px; background: rgba(239, 68, 68, 0.9); color: white; border: none; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
     .delete-preview:active { transform: scale(0.9); }
 
     .toast { position: fixed; bottom: 30px; left: 20px; right: 20px; background: #1e293b; color: white; padding: 1rem; border-radius: 30px; text-align: center; font-weight: 500; opacity: 0; visibility: hidden; transition: 0.2s; z-index: 300; }
     .toast.show { opacity: 1; visibility: visible; }
     .d-none { display: none !important; }
     hr { margin: 1.5rem 0; border: none; border-top: 1px solid #e2e8f0; }
-    
-    /* Updated Variant Styles */
+
+    /* Variant Styles */
     .variant-entry { display: flex; flex-direction: column; gap: 0.5rem; background: #f1f5f9; padding: 1.2rem; border-radius: 20px; margin-bottom: 1rem; border: 1px solid #e2e8f0; }
     .variant-entry input { margin-bottom: 0.5rem; background: white; }
     .remove-variant-btn { background: #fee2e2; border: none; padding: 0.8rem; border-radius: 18px; color: #ef4444; font-weight: 600; cursor: pointer; margin-top: 5px; width: 100%; }
@@ -170,239 +157,254 @@
         <div class="header-placeholder"></div>
     </div>
 
-    <!-- Drawer (AI Settings link removed) -->
-    <div class="drawer" id="drawer">
-        <div class="drawer-header">
-            <h2>DuckShop</h2>
-            <button class="close-drawer" id="closeDrawer"><i class="fas fa-times"></i></button>
-        </div>
-        <ul class="drawer-nav">
-            <li><a href="#dashboard" class="nav-link active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-            <li><a href="#products" class="nav-link"><i class="fas fa-box"></i> Products</a></li>
-            <li><a href="#categories" class="nav-link"><i class="fas fa-sitemap"></i> Categories</a></li>
-            <li><a href="#sub-categories" class="nav-link"><i class="fas fa-layer-group"></i> Sub Categories</a></li>
-            <li><a href="#orders" class="nav-link"><i class="fas fa-shopping-cart"></i> Orders</a></li>
-            <li><a href="#discounts" class="nav-link"><i class="fas fa-tag"></i> Discounts</a></li>
-            <!-- AI Settings link removed -->
-        </ul>
-        <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+<!-- Drawer (with new Category Products link) -->
+<div class="drawer" id="drawer">
+    <div class="drawer-header">
+        <h2>DuckShop</h2>
+        <button class="close-drawer" id="closeDrawer"><i class="fas fa-times"></i></button>
     </div>
-    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <ul class="drawer-nav">
+        <li><a href="#dashboard" class="nav-link active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="#products" class="nav-link"><i class="fas fa-box"></i> Products</a></li>
+        <li><a href="#categories" class="nav-link"><i class="fas fa-sitemap"></i> Categories</a></li>
+        <li><a href="#sub-categories" class="nav-link"><i class="fas fa-layer-group"></i> Sub Categories</a></li>
+        <li><a href="#cat-products" class="nav-link"><i class="fas fa-list-alt"></i> Category Products</a></li>
+        <li><a href="#orders" class="nav-link"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+        <li><a href="#discounts" class="nav-link"><i class="fas fa-tag"></i> Discounts</a></li>
+    </ul>
+    <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+</div>
+<div class="drawer-overlay" id="drawerOverlay"></div>
 
-    <!-- Main Content -->
-    <main class="main-content" id="mainContent">
-        <!-- Dashboard -->
-        <section id="dashboard-page" class="page active">
-            <div class="stats-grid">
-                <div class="stat-card"><div class="stat-icon"><i class="fas fa-box"></i></div><div class="stat-info"><h3 id="total-products">0</h3><p>Products</p></div></div>
-                <div class="stat-card"><div class="stat-icon"><i class="fas fa-sitemap"></i></div><div class="stat-info"><h3 id="total-categories">0</h3><p>Categories</p></div></div>
-                <div class="stat-card"><div class="stat-icon"><i class="fas fa-shopping-cart"></i></div><div class="stat-info"><h3 id="total-orders">0</h3><p>Orders</p></div></div>
-                <div class="stat-card"><div class="stat-icon"><i class="fas fa-rupee-sign"></i></div><div class="stat-info"><h3 id="total-revenue">₹0</h3><p>Revenue</p></div></div>
+<!-- Main Content -->
+<main class="main-content" id="mainContent">
+    <!-- Dashboard -->
+    <section id="dashboard-page" class="page active">
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-box"></i></div><div class="stat-info"><h3 id="total-products">0</h3><p>Products</p></div></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-sitemap"></i></div><div class="stat-info"><h3 id="total-categories">0</h3><p>Categories</p></div></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-shopping-cart"></i></div><div class="stat-info"><h3 id="total-orders">0</h3><p>Orders</p></div></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-rupee-sign"></i></div><div class="stat-info"><h3 id="total-revenue">₹0</h3><p>Revenue</p></div></div>
+        </div>
+        <h3 class="section-title">Pending Orders</h3>
+        <div id="pending-orders-list" class="order-list"></div>
+    </section>
+
+    <!-- Products -->
+    <section id="products-page" class="page">
+        <div class="content-header"><h2>Products</h2><button class="btn-add" id="add-product-btn"><i class="fas fa-plus"></i></button></div>
+        <div id="products-list" class="product-list"></div>
+    </section>
+
+    <!-- Categories -->
+    <section id="categories-page" class="page">
+        <div class="content-header"><h2>Categories</h2><button class="btn-add" id="add-category-btn"><i class="fas fa-plus"></i></button></div>
+        <div id="categories-list" class="category-list"></div>
+    </section>
+
+    <!-- Sub Categories -->
+    <section id="sub-categories-page" class="page">
+        <div class="content-header"><h2>Sub Categories</h2></div>
+        <div style="background:white; padding:1.5rem; border-radius:24px; border:1px solid #e2e8f0;">
+            <div class="form-group">
+                <label for="manage-sub-cat-parent">Select Parent Category</label>
+                <select id="manage-sub-cat-parent"><option value="">Select Category</option></select>
             </div>
-            <h3 class="section-title">Pending Orders</h3>
-            <div id="pending-orders-list" class="order-list"></div>
-        </section>
-
-        <!-- Products -->
-        <section id="products-page" class="page">
-            <div class="content-header"><h2>Products</h2><button class="btn-add" id="add-product-btn"><i class="fas fa-plus"></i></button></div>
-            <div id="products-list" class="product-list"></div>
-        </section>
-
-        <!-- Categories -->
-        <section id="categories-page" class="page">
-            <div class="content-header"><h2>Categories</h2><button class="btn-add" id="add-category-btn"><i class="fas fa-plus"></i></button></div>
-            <div id="categories-list" class="category-list"></div>
-        </section>
-
-        <!-- Sub Categories -->
-        <section id="sub-categories-page" class="page">
-            <div class="content-header"><h2>Sub Categories</h2></div>
-            <div style="background:white; padding:1.5rem; border-radius:24px; border:1px solid #e2e8f0;">
-                <div class="form-group">
-                    <label for="manage-sub-cat-parent">Select Parent Category</label>
-                    <select id="manage-sub-cat-parent"><option value="">Select Category</option></select>
+            
+            <div id="sub-cat-settings-area" class="d-none">
+                <div class="toggle-container">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="enable-sub-cats-toggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span style="font-weight:600;">Enable Sub-categories</span>
                 </div>
-                
-                <div id="sub-cat-settings-area" class="d-none">
-                    <div class="toggle-container">
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="enable-sub-cats-toggle">
-                            <span class="slider"></span>
-                        </label>
-                        <span style="font-weight:600;">Enable Sub-categories</span>
-                    </div>
-                    <p style="font-size:0.85rem; color:#64748b; margin-bottom:1rem;">
-                        If enabled, products in this category <b>must</b> have a sub-category selected. If disabled, sub-categories will be hidden.
-                    </p>
+                <p style="font-size:0.85rem; color:#64748b; margin-bottom:1rem;">
+                    If enabled, products in this category <b>must</b> have a sub-category selected. If disabled, sub-categories will be hidden.
+                </p>
 
-                    <div id="sub-cat-creation-area" class="d-none">
-                        <hr>
-                        <h4 style="margin-bottom:10px;">Manage List</h4>
-                        <div style="display:flex; gap:10px; margin-bottom:15px;">
-                            <input type="text" id="new-sub-cat-input" placeholder="New Sub Category Name" style="flex:1; padding:0.8rem; border-radius:12px; border:1px solid #ccc;">
-                            <button id="add-new-sub-cat-btn" class="btn btn-primary btn-sm">Add</button>
-                        </div>
-                        <div id="current-sub-cat-list"></div>
+                <div id="sub-cat-creation-area" class="d-none">
+                    <hr>
+                    <h4 style="margin-bottom:10px;">Manage List</h4>
+                    <div style="display:flex; gap:10px; margin-bottom:15px;">
+                        <input type="text" id="new-sub-cat-input" placeholder="New Sub Category Name" style="flex:1; padding:0.8rem; border-radius:12px; border:1px solid #ccc;">
+                        <button id="add-new-sub-cat-btn" class="btn btn-primary btn-sm">Add</button>
                     </div>
+                    <div id="current-sub-cat-list"></div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Orders -->
-        <section id="orders-page" class="page">
-            <div class="content-header"><h2>Orders</h2></div>
-            <div id="orders-list" class="orders-list"></div>
-        </section>
-
-        <!-- Discounts -->
-        <section id="discounts-page" class="page">
-            <div class="content-header"><h2>Discounts</h2><button class="btn-add" id="add-discount-btn"><i class="fas fa-plus"></i></button></div>
-            <div id="discounts-list" class="discount-list"></div>
-        </section>
-
-        <!-- AI Settings page removed -->
-    </main>
-
-    <!-- Product Modal -->
-    <div id="product-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modal-product-title">Add Product</h2>
-                <button class="close-modal-btn" data-target="#product-modal">&times;</button>
+    <!-- NEW: Category Products page -->
+    <section id="cat-products-page" class="page">
+        <div class="content-header"><h2>Products by Category</h2></div>
+        <div style="background:white; padding:1.5rem; border-radius:24px; border:1px solid #e2e8f0;">
+            <div class="form-group">
+                <label for="filter-category">Select Category</label>
+                <select id="filter-category"><option value="">Select Category</option></select>
             </div>
-            <form id="product-form">
-                <input type="hidden" id="product-id">
-                
-                <div class="form-group">
-                    <label for="product-category">Category</label>
-                    <select id="product-category" required><option value="">Select</option></select>
-                </div>
-
-                <!-- DYNAMIC SUB CATEGORY SELECT -->
-                <div class="form-group d-none" id="product-sub-cat-group">
-                    <label for="product-sub-category-select">Sub Category (Required)</label>
-                    <select id="product-sub-category-select">
-                        <option value="">Select Sub Category</option>
-                    </select>
-                </div>
-
-                <!-- Veg/Non-Veg Tagging -->
-                <div class="form-group d-none" id="food-type-container">
-                    <label for="product-food-type">Food Type</label>
-                    <select id="product-food-type">
-                        <option value="none">None</option>
-                        <option value="veg">🟢 Veg</option>
-                        <option value="non-veg">🔴 Non-Veg</option>
-                    </select>
-                </div>
-
-                <!-- HIDDEN INPUT TO STORE URLS -->
-                <input type="hidden" id="product-image-urls-hidden" value="">
-                
-                <div class="form-group">
-                    <label>Images</label>
-                    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;">
-                        <input type="file" id="product-image-upload" accept="image/*" multiple style="width:70%;">
-                        <button type="button" id="upload-product-images-btn" class="btn btn-primary" style="width:28%; padding:0.5rem; font-size:0.9rem;">Upload</button>
-                    </div>
-                    <div id="product-image-previews" class="image-previews"></div>
-                    <!-- AI Image Analyze Button -->
-                    <button type="button" id="ai-analyze-image-btn" class="btn" style="background: linear-gradient(135deg, #10b981, #3b82f6); color: white; margin-top: 5px; font-size: 0.9rem; padding: 0.6rem;">
-                        <i class="fas fa-eye"></i> &nbsp; Analyze Image (Multiple)
-                    </button>
-                </div>
-
-                <div class="form-group">
-                    <label for="product-name">Product Name</label>
-                    <input type="text" id="product-name" required placeholder="Short & SEO friendly name">
-                    <!-- AI Name/Desc Button -->
-                    <button type="button" id="ai-generate-text-btn" class="ai-btn">
-                        <i class="fas fa-magic"></i> AI Rewrite
-                    </button>
-                </div>
-                
-                <div class="form-group">
-                    <label for="product-description">Description</label>
-                    <textarea id="product-description" rows="6" required placeholder="Detailed description..."></textarea>
-                </div>
-
-                <div class="form-check" style="display: flex; align-items: center; gap: 0.5rem; margin: 1rem 0; background: #eff6ff; padding: 10px; border-radius: 12px;">
-                    <input type="checkbox" id="has-variants-checkbox" style="width: 20px; height: 20px;">
-                    <label for="has-variants-checkbox" style="margin: 0; font-weight: 600;">Has variants (e.g., 500g, 1kg)</label>
-                </div>
-
-                <div id="simple-product-fields">
-                    <div class="form-group">
-                        <label for="product-price">Selling Price (₹)</label>
-                        <input type="number" id="product-price" min="0" step="0.01" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="product-original-price">Original Price (₹)</label>
-                        <input type="number" id="product-original-price" min="0" step="0.01">
-                    </div>
-                    <div class="form-group">
-                        <label for="product-stock">Stock</label>
-                        <input type="number" id="product-stock" min="0" required>
-                    </div>
-                </div>
-
-                <div id="variant-product-fields" class="d-none">
-                    <div id="variants-list"></div>
-                    <button type="button" id="add-variant-btn" class="btn btn-primary" style="margin-top: 10px;">+ Add Variant</button>
-                </div>
-                <hr>
-                <button type="submit" class="btn btn-primary">Save Product</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Category Modal -->
-    <div id="category-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modal-category-title">Add Category</h2>
-                <button class="close-modal-btn" data-target="#category-modal">&times;</button>
+            <div class="form-group d-none" id="filter-subcat-group">
+                <label for="filter-subcategory">Sub Category</label>
+                <select id="filter-subcategory"><option value="">All Sub Categories</option></select>
+                <p style="font-size:0.8rem; color:#64748b;">Leave empty to show all products in this category (without sub‑category)</p>
             </div>
-            <form id="category-form">
-                <input type="hidden" id="category-id">
-                <div class="form-group">
-                    <label for="category-name">Category Name</label>
-                    <input type="text" id="category-name" required>
-                </div>
-                <input type="hidden" id="category-image-hidden" value="">
-                <div class="form-group">
-                    <label>Image</label>
-                    <input type="file" id="category-image-upload" accept="image/*">
-                    <button type="button" id="upload-category-image-btn" class="btn btn-primary btn-sm" style="margin-top:8px;">Upload</button>
-                    <div id="category-image-preview" class="image-previews"></div>
-                </div>
-                <button type="submit" class="btn btn-primary">Save Category</button>
-            </form>
+            <div id="filtered-products-list" class="product-list" style="margin-top:1rem;"></div>
         </div>
-    </div>
+    </section>
 
-    <!-- Other modals -->
-    <div id="discount-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header"><h2>Add Discount</h2><button class="close-modal-btn" data-target="#discount-modal">&times;</button></div>
-            <form id="discount-form">
-                <input type="hidden" id="discount-id">
-                <div class="form-group"><label>Code</label><input type="text" id="discount-code" required></div>
-                <div class="form-group"><label>Type</label><select id="discount-type" required><option value="percent">Percentage (%)</option><option value="fixed">Fixed (₹)</option></select></div>
-                <div class="form-group"><label>Value</label><input type="number" id="discount-value" min="0" step="0.01" required></div>
-                <div class="form-group d-none" id="max-discount-group"><label>Max Discount (₹)</label><input type="number" id="discount-max" min="0" step="0.01"></div>
-                <button type="submit" class="btn btn-primary">Save Discount</button>
-            </form>
-        </div>
-    </div>
+    <!-- Orders -->
+    <section id="orders-page" class="page">
+        <div class="content-header"><h2>Orders</h2></div>
+        <div id="orders-list" class="orders-list"></div>
+    </section>
 
-    <div id="order-details-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header"><h2>Order Details</h2><button class="close-modal-btn" data-target="#order-details-modal">&times;</button></div>
-            <div id="order-details-content"></div>
+    <!-- Discounts -->
+    <section id="discounts-page" class="page">
+        <div class="content-header"><h2>Discounts</h2><button class="btn-add" id="add-discount-btn"><i class="fas fa-plus"></i></button></div>
+        <div id="discounts-list" class="discount-list"></div>
+    </section>
+</main>
+
+<!-- Product Modal -->
+<div id="product-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modal-product-title">Add Product</h2>
+            <button class="close-modal-btn" data-target="#product-modal">&times;</button>
         </div>
+        <form id="product-form">
+            <input type="hidden" id="product-id">
+            
+            <div class="form-group">
+                <label for="product-category">Category</label>
+                <select id="product-category" required><option value="">Select</option></select>
+            </div>
+
+            <!-- DYNAMIC SUB CATEGORY SELECT -->
+            <div class="form-group d-none" id="product-sub-cat-group">
+                <label for="product-sub-category-select">Sub Category (Required)</label>
+                <select id="product-sub-category-select">
+                    <option value="">Select Sub Category</option>
+                </select>
+            </div>
+
+            <!-- Veg/Non-Veg Tagging -->
+            <div class="form-group d-none" id="food-type-container">
+                <label for="product-food-type">Food Type</label>
+                <select id="product-food-type">
+                    <option value="none">None</option>
+                    <option value="veg">🟢 Veg</option>
+                    <option value="non-veg">🔴 Non-Veg</option>
+                </select>
+            </div>
+
+            <!-- HIDDEN INPUT TO STORE URLS -->
+            <input type="hidden" id="product-image-urls-hidden" value="">
+            
+            <div class="form-group">
+                <label>Images</label>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;">
+                    <input type="file" id="product-image-upload" accept="image/*" multiple style="width:70%;">
+                    <button type="button" id="upload-product-images-btn" class="btn btn-primary" style="width:28%; padding:0.5rem; font-size:0.9rem;">Upload</button>
+                </div>
+                <div id="product-image-previews" class="image-previews"></div>
+                <!-- AI Image Analyze Button -->
+                <button type="button" id="ai-analyze-image-btn" class="btn" style="background: linear-gradient(135deg, #10b981, #3b82f6); color: white; margin-top: 5px; font-size: 0.9rem; padding: 0.6rem;">
+                    <i class="fas fa-eye"></i> &nbsp; Analyze Image (Multiple)
+                </button>
+            </div>
+
+            <div class="form-group">
+                <label for="product-name">Product Name</label>
+                <input type="text" id="product-name" required placeholder="Short & SEO friendly name">
+                <!-- AI Name/Desc Button -->
+                <button type="button" id="ai-generate-text-btn" class="ai-btn">
+                    <i class="fas fa-magic"></i> AI Rewrite
+                </button>
+            </div>
+            
+            <div class="form-group">
+                <label for="product-description">Description</label>
+                <textarea id="product-description" rows="6" required placeholder="Detailed description..."></textarea>
+            </div>
+
+            <div class="form-check" style="display: flex; align-items: center; gap: 0.5rem; margin: 1rem 0; background: #eff6ff; padding: 10px; border-radius: 12px;">
+                <input type="checkbox" id="has-variants-checkbox" style="width: 20px; height: 20px;">
+                <label for="has-variants-checkbox" style="margin: 0; font-weight: 600;">Has variants (e.g., 500g, 1kg)</label>
+            </div>
+
+            <div id="simple-product-fields">
+                <div class="form-group">
+                    <label for="product-price">Selling Price (₹)</label>
+                    <input type="number" id="product-price" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-original-price">Original Price (₹)</label>
+                    <input type="number" id="product-original-price" min="0" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="product-stock">Stock</label>
+                    <input type="number" id="product-stock" min="0" required>
+                </div>
+            </div>
+
+            <div id="variant-product-fields" class="d-none">
+                <div id="variants-list"></div>
+                <button type="button" id="add-variant-btn" class="btn btn-primary" style="margin-top: 10px;">+ Add Variant</button>
+            </div>
+            <hr>
+            <button type="submit" class="btn btn-primary">Save Product</button>
+        </form>
     </div>
+</div>
+
+<!-- Category Modal -->
+<div id="category-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modal-category-title">Add Category</h2>
+            <button class="close-modal-btn" data-target="#category-modal">&times;</button>
+        </div>
+        <form id="category-form">
+            <input type="hidden" id="category-id">
+            <div class="form-group">
+                <label for="category-name">Category Name</label>
+                <input type="text" id="category-name" required>
+            </div>
+            <input type="hidden" id="category-image-hidden" value="">
+            <div class="form-group">
+                <label>Image</label>
+                <input type="file" id="category-image-upload" accept="image/*">
+                <button type="button" id="upload-category-image-btn" class="btn btn-primary btn-sm" style="margin-top:8px;">Upload</button>
+                <div id="category-image-preview" class="image-previews"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Category</button>
+        </form>
+    </div>
+</div>
+
+<!-- Other modals -->
+<div id="discount-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header"><h2>Add Discount</h2><button class="close-modal-btn" data-target="#discount-modal">&times;</button></div>
+        <form id="discount-form">
+            <input type="hidden" id="discount-id">
+            <div class="form-group"><label>Code</label><input type="text" id="discount-code" required></div>
+            <div class="form-group"><label>Type</label><select id="discount-type" required><option value="percent">Percentage (%)</option><option value="fixed">Fixed (₹)</option></select></div>
+            <div class="form-group"><label>Value</label><input type="number" id="discount-value" min="0" step="0.01" required></div>
+            <div class="form-group d-none" id="max-discount-group"><label>Max Discount (₹)</label><input type="number" id="discount-max" min="0" step="0.01"></div>
+            <button type="submit" class="btn btn-primary">Save Discount</button>
+        </form>
+    </div>
+</div>
+
+<div id="order-details-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header"><h2>Order Details</h2><button class="close-modal-btn" data-target="#order-details-modal">&times;</button></div>
+        <div id="order-details-content"></div>
+    </div>
+</div>
 </div>
 
 <div id="toast-notification" class="toast"></div>
@@ -501,9 +503,7 @@
             if (snapshot.exists()) {
                 aiConfig = snapshot.val();
             } else {
-                // No config yet, use defaults and optionally save them
                 aiConfig = { ...DEFAULT_CONFIG };
-                // Write defaults to Firebase for next time
                 await set(ref(db, 'config/ai'), aiConfig);
             }
         } catch (error) {
@@ -514,7 +514,6 @@
 
     // --- MODIFIED AI FUNCTION USING DYNAMIC CONFIG ---
     async function callAI(prompt, modelType, imageUrls = []) {
-        // modelType can be 'text' or 'image' to select the appropriate model from aiConfig
         const model = modelType === 'image' ? aiConfig.imageModel : aiConfig.textModel;
         const apiKey = aiConfig.openRouterKey;
 
@@ -548,6 +547,11 @@
         if (activeLink) pageTitle.textContent = activeLink.textContent.trim();
         drawer.classList.remove('open');
         drawerOverlay.classList.remove('show');
+
+        // If we switch to cat-products page, refresh the filtered list
+        if (hash === '#cat-products') {
+            renderFilteredProducts();
+        }
     };
     window.addEventListener('hashchange', handleRouting);
     menuToggle.addEventListener('click', () => { drawer.classList.add('open'); drawerOverlay.classList.add('show'); });
@@ -558,7 +562,14 @@
     const listenToData = (path, cb) => onValue(ref(db, path), (s) => cb(s.val() || {}));
 
     const initializeAppState = () => {
-        listenToData('products', renderProductsList);
+        listenToData('products', (products) => {
+            currentProducts = products;
+            renderProductsList(products);
+            // if cat-products page is active, update filtered view
+            if (document.getElementById('cat-products-page').classList.contains('active')) {
+                renderFilteredProducts();
+            }
+        });
         listenToData('categories', renderCategoriesList);
         listenToData('orders', renderOrdersList);
         listenToData('discounts', renderDiscountsList);
@@ -614,13 +625,13 @@
             </div>
         `).join('');
         
-        // Populate dropdowns for Product Modal & Sub Cat Page
         const options = '<option value="">Select Category</option>' + Object.entries(cats).map(([id, c]) => `<option value="${id}">${c.name}</option>`).join('');
         document.getElementById('product-category').innerHTML = options;
         document.getElementById('manage-sub-cat-parent').innerHTML = options;
+        document.getElementById('filter-category').innerHTML = options; // for cat-products page
     };
 
-    // --- SUB CATEGORY MANAGEMENT LOGIC (unchanged) ---
+    // --- SUB CATEGORY MANAGEMENT (unchanged) ---
     const parentCatSelect = document.getElementById('manage-sub-cat-parent');
     const subCatSettingsArea = document.getElementById('sub-cat-settings-area');
     const enableToggle = document.getElementById('enable-sub-cats-toggle');
@@ -637,7 +648,6 @@
         }
         subCatSettingsArea.classList.remove('d-none');
         
-        // Fetch Settings
         const settingsSnap = await get(ref(db, `categorySettings/${catId}`));
         const isEnabled = settingsSnap.exists() && settingsSnap.val().subCategoriesEnabled;
         enableToggle.checked = isEnabled;
@@ -662,11 +672,129 @@
             Object.entries(snap.val()).forEach(([subId, data]) => {
                 const el = document.createElement('div');
                 el.className = 'sub-cat-item';
-                el.innerHTML = `<span>${data.name}</span> <button class="sub-cat-delete" onclick="deleteSubCat('${catId}', '${subId}')"><i class="fas fa-trash"></i></button>`;
+                el.dataset.subId = subId;
+                el.dataset.catId = catId;
+
+                const nameSpan = document.createElement('span');
+                nameSpan.className = 'sub-cat-name';
+                nameSpan.textContent = data.name;
+
+                const actionsDiv = document.createElement('div');
+                actionsDiv.className = 'sub-cat-actions';
+                
+                const editBtn = document.createElement('button');
+                editBtn.className = 'sub-cat-edit';
+                editBtn.innerHTML = '<i class="fas fa-pen"></i>';
+                editBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    startEditSubCat(el, subId, catId, data.name);
+                });
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'sub-cat-delete';
+                deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                deleteBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    deleteSubCat(catId, subId);
+                });
+
+                actionsDiv.appendChild(editBtn);
+                actionsDiv.appendChild(deleteBtn);
+
+                el.appendChild(nameSpan);
+                el.appendChild(actionsDiv);
                 subCatList.appendChild(el);
             });
         } else {
             subCatList.innerHTML = '<p style="font-size:0.9rem; color:#888;">No sub-categories added yet.</p>';
+        }
+    }
+
+    function startEditSubCat(itemEl, subId, catId, currentName) {
+        const nameSpan = itemEl.querySelector('.sub-cat-name');
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = currentName;
+        input.className = 'edit-sub-cat-input';
+        input.style.flex = '1';
+        input.style.padding = '0.5rem';
+        input.style.borderRadius = '8px';
+        input.style.border = '1px solid #ccc';
+
+        itemEl.replaceChild(input, nameSpan);
+
+        const actionsDiv = itemEl.querySelector('.sub-cat-actions');
+        actionsDiv.innerHTML = '';
+
+        const saveBtn = document.createElement('button');
+        saveBtn.className = 'sub-cat-save';
+        saveBtn.innerHTML = '<i class="fas fa-check"></i>';
+        saveBtn.addEventListener('click', async () => {
+            const newName = input.value.trim();
+            if (!newName) return showToast('Name cannot be empty', 'error');
+            if (newName === currentName) {
+                cancelEdit();
+                return;
+            }
+            // Check uniqueness
+            const snap = await get(ref(db, `subCategories/${catId}`));
+            if (snap.exists()) {
+                const existing = Object.entries(snap.val()).find(([id, data]) => data.name === newName && id !== subId);
+                if (existing) {
+                    showToast('Sub-category name already exists in this category', 'error');
+                    return;
+                }
+            }
+            // Update Firebase
+            await update(ref(db, `subCategories/${catId}/${subId}`), { name: newName });
+            // Update all products with this category and old sub-category name
+            await updateProductSubCategory(catId, currentName, newName);
+            showToast('Updated');
+            loadSubCategories(catId);
+        });
+
+        const cancelBtn = document.createElement('button');
+        cancelBtn.className = 'sub-cat-cancel';
+        cancelBtn.innerHTML = '<i class="fas fa-times"></i>';
+        cancelBtn.addEventListener('click', cancelEdit);
+
+        actionsDiv.appendChild(saveBtn);
+        actionsDiv.appendChild(cancelBtn);
+
+        function cancelEdit() {
+            itemEl.replaceChild(nameSpan, input);
+            actionsDiv.innerHTML = '';
+            const editBtn = document.createElement('button');
+            editBtn.className = 'sub-cat-edit';
+            editBtn.innerHTML = '<i class="fas fa-pen"></i>';
+            editBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                startEditSubCat(itemEl, subId, catId, currentName);
+            });
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'sub-cat-delete';
+            deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
+            deleteBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                deleteSubCat(catId, subId);
+            });
+            actionsDiv.appendChild(editBtn);
+            actionsDiv.appendChild(deleteBtn);
+        }
+    }
+
+    async function updateProductSubCategory(catId, oldName, newName) {
+        const productsSnap = await get(ref(db, 'products'));
+        if (productsSnap.exists()) {
+            const updates = {};
+            Object.entries(productsSnap.val()).forEach(([prodId, prod]) => {
+                if (prod.categoryId === catId && prod.subCategory === oldName) {
+                    updates[`products/${prodId}/subCategory`] = newName;
+                }
+            });
+            if (Object.keys(updates).length > 0) {
+                await update(ref(db), updates);
+            }
         }
     }
 
@@ -688,7 +816,7 @@
         }
     };
 
-    // --- PRODUCT MODAL LOGIC (unchanged) ---
+    // --- PRODUCT MODAL LOGIC ---
     const prodCatSelect = document.getElementById('product-category');
     const prodSubCatGroup = document.getElementById('product-sub-cat-group');
     const prodSubCatSelect = document.getElementById('product-sub-category-select');
@@ -698,7 +826,6 @@
         const catId = e.target.value;
         const catName = e.target.options[e.target.selectedIndex]?.text.toLowerCase() || '';
 
-        // 1. Food Type Tag Logic
         if(catName.includes('fast') || catName.includes('grocery') || catName.includes('food') || catName.includes('non') || catName.includes('veg')) {
             prodFoodTypeContainer.classList.remove('d-none');
         } else {
@@ -706,7 +833,6 @@
             document.getElementById('product-food-type').value = 'none';
         }
 
-        // 2. Sub Category Logic
         prodSubCatGroup.classList.add('d-none');
         prodSubCatSelect.innerHTML = '<option value="">Select Sub Category</option>';
         prodSubCatSelect.required = false;
@@ -726,7 +852,7 @@
         }
     });
 
-    // --- AI FUNCTIONS (UPDATED to use callAI with modelType) ---
+    // --- AI FUNCTIONS ---
     document.getElementById('ai-generate-text-btn').addEventListener('click', async function() {
         const name = document.getElementById('product-name').value;
         if (!name) return showToast('Enter name first', 'error');
@@ -781,7 +907,7 @@
         btn.disabled = false;
     });
 
-    // --- UPLOAD LOGIC (unchanged) ---
+    // --- UPLOAD LOGIC ---
     async function uploadToImgBB(file) {
         const fd = new FormData(); fd.append('image', file);
         const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, { method:'POST', body:fd });
@@ -860,6 +986,143 @@
         });
         document.getElementById('category-image-hidden').value = url;
         showToast('Image Uploaded');
+    });
+
+    // --- FILTERED PRODUCTS (Category Products page) ---
+    const filterCatSelect = document.getElementById('filter-category');
+    const filterSubcatGroup = document.getElementById('filter-subcat-group');
+    const filterSubcatSelect = document.getElementById('filter-subcategory');
+    const filteredContainer = document.getElementById('filtered-products-list');
+
+    filterCatSelect.addEventListener('change', async (e) => {
+        const catId = e.target.value;
+        filterSubcatGroup.classList.add('d-none');
+        filterSubcatSelect.innerHTML = '<option value="">All Sub Categories</option>';
+        
+        if (catId) {
+            const settingsSnap = await get(ref(db, `categorySettings/${catId}`));
+            if (settingsSnap.exists() && settingsSnap.val().subCategoriesEnabled) {
+                const subSnap = await get(ref(db, `subCategories/${catId}`));
+                if (subSnap.exists()) {
+                    filterSubcatGroup.classList.remove('d-none');
+                    Object.entries(subSnap.val()).forEach(([sid, data]) => {
+                        filterSubcatSelect.innerHTML += `<option value="${data.name}">${data.name}</option>`;
+                    });
+                }
+            }
+        }
+        renderFilteredProducts();
+    });
+
+    filterSubcatSelect.addEventListener('change', () => {
+        renderFilteredProducts();
+    });
+
+    function renderFilteredProducts() {
+        const catId = filterCatSelect.value;
+        if (!catId) {
+            filteredContainer.innerHTML = '<p style="text-align:center; color:#888;">Please select a category</p>';
+            return;
+        }
+        const subCat = filterSubcatSelect.value || null; // empty means no subcat filter (include products with no subcat or any subcat? We'll treat empty as "all products in this category regardless of subcat")
+
+        const filtered = Object.entries(currentProducts).filter(([id, p]) => {
+            if (p.categoryId !== catId) return false;
+            if (subCat) {
+                return p.subCategory === subCat;
+            }
+            // if subCat is empty, include all products of this category (with or without subcat)
+            return true;
+        });
+
+        if (filtered.length === 0) {
+            filteredContainer.innerHTML = '<p style="text-align:center; color:#888;">No products found</p>';
+        } else {
+            filteredContainer.innerHTML = filtered.map(([id, p]) => `
+                <div class="product-card">
+                    <img src="${(p.imageUrls && p.imageUrls[0]) || p.imageUrl || ''}" class="product-img">
+                    <div class="product-details">
+                        <h4>${p.name}</h4>
+                        <div class="product-category">${p.categoryName}${p.subCategory ? ' > '+p.subCategory : ''}</div>
+                        <div class="product-price">${p.hasVariants ? 'Variants' : formatCurrency(p.price)}</div>
+                    </div>
+                    <div class="actions-group">
+                        <button class="btn-edit" data-id="${id}"><i class="fas fa-edit"></i></button>
+                        <button class="btn-delete" data-id="${id}"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+
+    // Attach edit/delete listeners for filtered products container
+    filteredContainer.addEventListener('click', async (e) => {
+        const btn = e.target.closest('.btn-edit');
+        if (btn) {
+            const id = btn.dataset.id;
+            const p = currentProducts[id];
+            
+            // Populate product modal (same as main edit)
+            document.getElementById('product-id').value = id;
+            document.getElementById('product-name').value = p.name;
+            document.getElementById('product-description').value = p.description;
+            document.getElementById('product-category').value = p.categoryId;
+            
+            const event = new Event('change');
+            document.getElementById('product-category').dispatchEvent(event);
+            
+            setTimeout(() => {
+                if(p.subCategory) document.getElementById('product-sub-category-select').value = p.subCategory;
+            }, 500);
+
+            if(p.foodType) document.getElementById('product-food-type').value = p.foodType;
+            
+            document.getElementById('has-variants-checkbox').checked = p.hasVariants || false;
+            
+            document.getElementById('simple-product-fields').classList.toggle('d-none', p.hasVariants);
+            document.getElementById('variant-product-fields').classList.toggle('d-none', !p.hasVariants);
+            
+            if(!p.hasVariants) {
+                document.getElementById('product-price').value = p.price;
+                document.getElementById('product-original-price').value = p.originalPrice;
+                document.getElementById('product-stock').value = p.stock;
+            } else {
+                document.getElementById('variants-list').innerHTML = '';
+                if(p.variants) {
+                    p.variants.forEach(v => {
+                        const div = document.createElement('div');
+                        div.className = 'variant-entry';
+                        div.innerHTML = `
+                            <input type="text" class="variant-name" value="${v.name}" required>
+                            <input type="number" class="variant-price" value="${v.price}" required>
+                            <input type="number" class="variant-original-price" value="${v.originalPrice || ''}">
+                            <input type="number" class="variant-stock" value="${v.stock}" required>
+                            <button type="button" class="remove-variant-btn">Remove</button>
+                        `;
+                        div.querySelector('.remove-variant-btn').onclick = () => div.remove();
+                        document.getElementById('variants-list').appendChild(div);
+                    });
+                }
+            }
+
+            const container = document.getElementById('product-image-previews');
+            container.innerHTML = '';
+            const urls = p.imageUrls || (p.imageUrl ? [p.imageUrl] : []);
+            document.getElementById('product-image-urls-hidden').value = urls.join(',');
+            
+            urls.forEach(url => {
+                addPreview(container, url, false, updateProductUrls);
+            });
+
+            document.getElementById('modal-product-title').textContent = 'Edit Product';
+            document.getElementById('product-modal').classList.add('open');
+        }
+
+        const delBtn = e.target.closest('.btn-delete');
+        if (delBtn && confirm('Delete this product?')) {
+            await remove(ref(db, `products/${delBtn.dataset.id}`));
+            showToast('Deleted');
+        }
     });
 
     // --- SUBMISSION HANDLERS (unchanged) ---
@@ -987,7 +1250,7 @@
         document.getElementById('variants-list').appendChild(div);
     };
 
-    // Edit Product logic
+    // Edit Product logic (main products list)
     document.getElementById('products-list').addEventListener('click', async (e) => {
         const btn = e.target.closest('.btn-edit');
         if(btn) {
@@ -1008,10 +1271,10 @@
 
             if(p.foodType) document.getElementById('product-food-type').value = p.foodType;
             
-            hasVariantsCheck.checked = p.hasVariants || false;
+            document.getElementById('has-variants-checkbox').checked = p.hasVariants || false;
             
-            document.getElementById('simple-product-fields').classList.toggle('d-none', hasVariantsCheck.checked);
-            document.getElementById('variant-product-fields').classList.toggle('d-none', !hasVariantsCheck.checked);
+            document.getElementById('simple-product-fields').classList.toggle('d-none', p.hasVariants);
+            document.getElementById('variant-product-fields').classList.toggle('d-none', !p.hasVariants);
             
             if(!p.hasVariants) {
                 document.getElementById('product-price').value = p.price;
@@ -1087,5 +1350,6 @@
         document.getElementById('discount-modal').classList.remove('open');
     }
 </script>
+
 </body>
 </html>
