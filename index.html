@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>DuckShop · Admin (Pro AI)</title>
+    <title>DuckShop · Admin (WebP + AI)</title>
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,121 +14,121 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #f5f7fb; color: #1e293b; font-size: 15px; line-height: 1.5; }
 
-    /* Login Screen */
-    .login-container { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: linear-gradient(145deg, #3b82f6 0%, #8b5cf6 100%); padding: 1rem; }
-    .login-box { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); width: 100%; max-width: 380px; padding: 2rem 1.5rem; border-radius: 28px; box-shadow: 0 20px 35px rgba(0,0,0,0.2); }
-    .login-box h1 { font-size: 2rem; font-weight: 700; margin-bottom: 2rem; text-align: center; color: #1e293b; }
+/* Login Screen */
+.login-container { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: linear-gradient(145deg, #3b82f6 0%, #8b5cf6 100%); padding: 1rem; }
+.login-box { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); width: 100%; max-width: 380px; padding: 2rem 1.5rem; border-radius: 28px; box-shadow: 0 20px 35px rgba(0,0,0,0.2); }
+.login-box h1 { font-size: 2rem; font-weight: 700; margin-bottom: 2rem; text-align: center; color: #1e293b; }
 
-    .form-group { margin-bottom: 1.5rem; position: relative; }
-    .form-group label { display: block; font-weight: 500; margin-bottom: 0.5rem; color: #334155; }
-    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem; border: 1px solid #cbd5e1; border-radius: 18px; font-size: 1rem; background: white; transition: border 0.2s; }
-    .form-group input:focus, .form-group textarea:focus { border-color: #3b82f6; outline: none; }
+.form-group { margin-bottom: 1.5rem; position: relative; }
+.form-group label { display: block; font-weight: 500; margin-bottom: 0.5rem; color: #334155; }
+.form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem; border: 1px solid #cbd5e1; border-radius: 18px; font-size: 1rem; background: white; transition: border 0.2s; }
+.form-group input:focus, .form-group textarea:focus { border-color: #3b82f6; outline: none; }
 
-    /* AI Button Styles */
-    .ai-btn { position: absolute; top: 0; right: 0; background: linear-gradient(135deg, #6366f1, #a855f7); color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px; box-shadow: 0 4px 10px rgba(168, 85, 247, 0.3); transition: transform 0.2s; }
-    .ai-btn:hover { transform: scale(1.05); }
-    .ai-loading { opacity: 0.7; pointer-events: none; }
+/* AI Button Styles */
+.ai-btn { position: absolute; top: 0; right: 0; background: linear-gradient(135deg, #6366f1, #a855f7); color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px; box-shadow: 0 4px 10px rgba(168, 85, 247, 0.3); transition: transform 0.2s; }
+.ai-btn:hover { transform: scale(1.05); }
+.ai-loading { opacity: 0.7; pointer-events: none; }
 
-    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; border: none; border-radius: 40px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.2s; background: #e2e8f0; color: #1e293b; width: 100%; }
-    .btn-primary { background: #3b82f6; color: white; }
-    .btn-primary:active { background: #2563eb; }
-    .btn-sm { padding: 0.5rem 1rem; font-size: 0.9rem; width: auto; }
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; border: none; border-radius: 40px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.2s; background: #e2e8f0; color: #1e293b; width: 100%; }
+.btn-primary { background: #3b82f6; color: white; }
+.btn-primary:active { background: #2563eb; }
+.btn-sm { padding: 0.5rem 1rem; font-size: 0.9rem; width: auto; }
 
-    /* Admin wrapper */
-    .admin-wrapper { display: flex; flex-direction: column; height: 100vh; background: #f8fafc; position: relative; }
-    .app-header { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1.2rem; background: white; border-bottom: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.03); z-index: 20; }
-    .menu-btn { background: none; border: none; font-size: 1.8rem; color: #3b82f6; cursor: pointer; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; }
-    .app-header h1 { font-size: 1.5rem; font-weight: 700; color: #0f172a; }
-    .header-placeholder { width: 48px; }
+/* Admin wrapper */
+.admin-wrapper { display: flex; flex-direction: column; height: 100vh; background: #f8fafc; position: relative; }
+.app-header { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1.2rem; background: white; border-bottom: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.03); z-index: 20; }
+.menu-btn { background: none; border: none; font-size: 1.8rem; color: #3b82f6; cursor: pointer; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; }
+.app-header h1 { font-size: 1.5rem; font-weight: 700; color: #0f172a; }
+.header-placeholder { width: 48px; }
 
-    /* Drawer */
-    .drawer { position: fixed; top: 0; left: 0; bottom: 0; width: 280px; background: white; box-shadow: 4px 0 20px rgba(0,0,0,0.1); transform: translateX(-100%); transition: transform 0.25s ease; z-index: 100; padding: 2rem 1rem; display: flex; flex-direction: column; }
-    .drawer.open { transform: translateX(0); }
-    .drawer-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.5rem; padding: 0 0.5rem; }
-    .drawer-header h2 { font-size: 1.8rem; font-weight: 700; background: linear-gradient(145deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .close-drawer { background: none; border: none; font-size: 2rem; cursor: pointer; color: #64748b; }
-    .drawer-nav { list-style: none; flex: 1; }
-    .drawer-nav li { margin-bottom: 0.75rem; }
-    .drawer-nav a { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; color: #334155; font-weight: 500; border-radius: 16px; text-decoration: none; font-size: 1.1rem; transition: background 0.2s; }
-    .drawer-nav a i { width: 28px; font-size: 1.3rem; color: #3b82f6; }
-    .drawer-nav a.active { background: #3b82f6; color: white; }
-    .drawer-nav a.active i { color: white; }
-    #logout-btn { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; background: none; border: 1px solid #e2e8f0; border-radius: 20px; color: #ef4444; font-weight: 500; font-size: 1.1rem; cursor: pointer; margin-top: 1rem; width: 100%; }
-    .drawer-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); opacity: 0; visibility: hidden; transition: 0.2s; z-index: 90; }
-    .drawer-overlay.show { opacity: 1; visibility: visible; }
+/* Drawer */
+.drawer { position: fixed; top: 0; left: 0; bottom: 0; width: 280px; background: white; box-shadow: 4px 0 20px rgba(0,0,0,0.1); transform: translateX(-100%); transition: transform 0.25s ease; z-index: 100; padding: 2rem 1rem; display: flex; flex-direction: column; }
+.drawer.open { transform: translateX(0); }
+.drawer-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.5rem; padding: 0 0.5rem; }
+.drawer-header h2 { font-size: 1.8rem; font-weight: 700; background: linear-gradient(145deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.close-drawer { background: none; border: none; font-size: 2rem; cursor: pointer; color: #64748b; }
+.drawer-nav { list-style: none; flex: 1; }
+.drawer-nav li { margin-bottom: 0.75rem; }
+.drawer-nav a { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; color: #334155; font-weight: 500; border-radius: 16px; text-decoration: none; font-size: 1.1rem; transition: background 0.2s; }
+.drawer-nav a i { width: 28px; font-size: 1.3rem; color: #3b82f6; }
+.drawer-nav a.active { background: #3b82f6; color: white; }
+.drawer-nav a.active i { color: white; }
+#logout-btn { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; background: none; border: 1px solid #e2e8f0; border-radius: 20px; color: #ef4444; font-weight: 500; font-size: 1.1rem; cursor: pointer; margin-top: 1rem; width: 100%; }
+.drawer-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); opacity: 0; visibility: hidden; transition: 0.2s; z-index: 90; }
+.drawer-overlay.show { opacity: 1; visibility: visible; }
 
-    /* Main content */
-    .main-content { flex: 1; overflow-y: auto; padding: 1.2rem; -webkit-overflow-scrolling: touch; }
-    .page { display: none; }
-    .page.active { display: block; }
+/* Main content */
+.main-content { flex: 1; overflow-y: auto; padding: 1.2rem; -webkit-overflow-scrolling: touch; }
+.page { display: none; }
+.page.active { display: block; }
 
-    /* Stats */
-    .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem; }
-    .stat-card { background: white; border-radius: 24px; padding: 1.2rem 1rem; box-shadow: 0 6px 14px rgba(0,0,0,0.03); border: 1px solid #e9eef2; display: flex; align-items: center; gap: 0.8rem; }
-    .stat-icon { width: 52px; height: 52px; border-radius: 18px; background: #dbeafe; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #3b82f6; }
-    .stat-info h3 { font-size: 1.6rem; font-weight: 700; line-height: 1.2; color: #0f172a; }
-    .stat-info p { font-size: 0.8rem; color: #64748b; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; }
+/* Stats */
+.stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem; }
+.stat-card { background: white; border-radius: 24px; padding: 1.2rem 1rem; box-shadow: 0 6px 14px rgba(0,0,0,0.03); border: 1px solid #e9eef2; display: flex; align-items: center; gap: 0.8rem; }
+.stat-icon { width: 52px; height: 52px; border-radius: 18px; background: #dbeafe; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #3b82f6; }
+.stat-info h3 { font-size: 1.6rem; font-weight: 700; line-height: 1.2; color: #0f172a; }
+.stat-info p { font-size: 0.8rem; color: #64748b; font-weight: 500; text-transform: uppercase; letter-spacing: 0.3px; }
 
-    /* Lists */
-    .content-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
-    .content-header h2 { font-size: 1.6rem; font-weight: 700; color: #0f172a; }
-    .btn-add { background: #3b82f6; color: white; border: none; width: 52px; height: 52px; border-radius: 30px; font-size: 1.6rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 12px rgba(59,130,246,0.3); cursor: pointer; }
+/* Lists */
+.content-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.content-header h2 { font-size: 1.6rem; font-weight: 700; color: #0f172a; }
+.btn-add { background: #3b82f6; color: white; border: none; width: 52px; height: 52px; border-radius: 30px; font-size: 1.6rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 12px rgba(59,130,246,0.3); cursor: pointer; }
 
-    .product-list, .category-list, .order-list { display: flex; flex-direction: column; gap: 1rem; }
-    .product-card, .category-item { background: white; border-radius: 22px; padding: 1rem; border: 1px solid #edf2f7; display: flex; align-items: center; gap: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
-    .product-img, .category-img { width: 70px; height: 70px; border-radius: 18px; object-fit: cover; background: #f1f5f9; }
-    .product-details { flex: 1; }
-    .product-details h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.2rem; }
-    .product-details .product-category { font-size: 0.8rem; color: #64748b; margin-bottom: 0.3rem; }
-    .product-details .product-price { font-weight: 700; color: #3b82f6; }
-    .actions-group { display: flex; gap: 0.5rem; }
-    .actions-group button { width: 44px; height: 44px; border-radius: 18px; border: 1px solid #e2e8f0; background: white; font-size: 1.2rem; color: #334155; cursor: pointer; }
-    .actions-group .btn-delete { color: #ef4444; }
+.product-list, .category-list, .order-list { display: flex; flex-direction: column; gap: 1rem; }
+.product-card, .category-item { background: white; border-radius: 22px; padding: 1rem; border: 1px solid #edf2f7; display: flex; align-items: center; gap: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+.product-img, .category-img { width: 70px; height: 70px; border-radius: 18px; object-fit: cover; background: #f1f5f9; }
+.product-details { flex: 1; }
+.product-details h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.2rem; }
+.product-details .product-category { font-size: 0.8rem; color: #64748b; margin-bottom: 0.3rem; }
+.product-details .product-price { font-weight: 700; color: #3b82f6; }
+.actions-group { display: flex; gap: 0.5rem; }
+.actions-group button { width: 44px; height: 44px; border-radius: 18px; border: 1px solid #e2e8f0; background: white; font-size: 1.2rem; color: #334155; cursor: pointer; }
+.actions-group .btn-delete { color: #ef4444; }
 
-    /* Toggle Switch */
-    .toggle-container { display: flex; align-items: center; gap: 10px; margin: 1rem 0; background: #eff6ff; padding: 15px; border-radius: 12px; }
-    .toggle-switch { position: relative; display: inline-block; width: 50px; height: 26px; }
-    .toggle-switch input { opacity: 0; width: 0; height: 0; }
-    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
-    .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
-    input:checked + .slider { background-color: #3b82f6; }
-    input:checked + .slider:before { transform: translateX(24px); }
+/* Toggle Switch */
+.toggle-container { display: flex; align-items: center; gap: 10px; margin: 1rem 0; background: #eff6ff; padding: 15px; border-radius: 12px; }
+.toggle-switch { position: relative; display: inline-block; width: 50px; height: 26px; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+.slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: #3b82f6; }
+input:checked + .slider:before { transform: translateX(24px); }
 
-    /* Sub Category Item Styles (updated) */
-    .sub-cat-item { display: flex; justify-content: space-between; align-items: center; background: white; padding: 12px; border-radius: 12px; margin-bottom: 8px; border: 1px solid #e2e8f0; }
-    .sub-cat-actions { display: flex; gap: 0.3rem; }
-    .sub-cat-edit, .sub-cat-delete, .sub-cat-save, .sub-cat-cancel { background: none; border: none; font-size: 1rem; cursor: pointer; padding: 0.3rem 0.5rem; border-radius: 8px; }
-    .sub-cat-edit { color: #3b82f6; }
-    .sub-cat-delete { color: #ef4444; }
-    .sub-cat-save { color: #10b981; }
-    .sub-cat-cancel { color: #6b7280; }
-    .edit-sub-cat-input { flex: 1; padding: 0.5rem; border-radius: 8px; border: 1px solid #ccc; font-size: 0.9rem; }
+/* Sub Category Item Styles (updated) */
+.sub-cat-item { display: flex; justify-content: space-between; align-items: center; background: white; padding: 12px; border-radius: 12px; margin-bottom: 8px; border: 1px solid #e2e8f0; }
+.sub-cat-actions { display: flex; gap: 0.3rem; }
+.sub-cat-edit, .sub-cat-delete, .sub-cat-save, .sub-cat-cancel { background: none; border: none; font-size: 1rem; cursor: pointer; padding: 0.3rem 0.5rem; border-radius: 8px; }
+.sub-cat-edit { color: #3b82f6; }
+.sub-cat-delete { color: #ef4444; }
+.sub-cat-save { color: #10b981; }
+.sub-cat-cancel { color: #6b7280; }
+.edit-sub-cat-input { flex: 1; padding: 0.5rem; border-radius: 8px; border: 1px solid #ccc; font-size: 0.9rem; }
 
-    /* Modal */
-    .modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: flex-end; justify-content: center; opacity: 0; visibility: hidden; transition: 0.2s; z-index: 200; }
-    .modal.open { opacity: 1; visibility: visible; }
-    .modal-content { background: white; width: 100%; max-height: 95vh; overflow-y: auto; border-top-left-radius: 30px; border-top-right-radius: 30px; padding: 2rem 1.5rem; transform: translateY(100%); transition: transform 0.25s; box-shadow: 0 -10px 30px rgba(0,0,0,0.2); }
-    .modal.open .modal-content { transform: translateY(0); }
-    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
-    .close-modal-btn { background: none; border: none; font-size: 2.2rem; cursor: pointer; color: #64748b; }
+/* Modal */
+.modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: flex-end; justify-content: center; opacity: 0; visibility: hidden; transition: 0.2s; z-index: 200; }
+.modal.open { opacity: 1; visibility: visible; }
+.modal-content { background: white; width: 100%; max-height: 95vh; overflow-y: auto; border-top-left-radius: 30px; border-top-right-radius: 30px; padding: 2rem 1.5rem; transform: translateY(100%); transition: transform 0.25s; box-shadow: 0 -10px 30px rgba(0,0,0,0.2); }
+.modal.open .modal-content { transform: translateY(0); }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+.close-modal-btn { background: none; border: none; font-size: 2.2rem; cursor: pointer; color: #64748b; }
 
-    /* FIXED IMAGE PREVIEW & DELETE BUTTON */
-    .image-previews { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1rem 0; }
-    .preview-item { position: relative; width: 80px; height: 80px; border-radius: 18px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    .preview-item img { width: 100%; height: 100%; object-fit: cover; }
-    .delete-preview { position: absolute; top: 2px; right: 2px; background: rgba(239, 68, 68, 0.9); color: white; border: none; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-    .delete-preview:active { transform: scale(0.9); }
+/* FIXED IMAGE PREVIEW & DELETE BUTTON (no BG remove) */
+.image-previews { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1rem 0; }
+.preview-item { position: relative; width: 80px; height: 80px; border-radius: 18px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.preview-item img { width: 100%; height: 100%; object-fit: cover; }
+.delete-preview { position: absolute; top: 2px; right: 2px; background: rgba(239, 68, 68, 0.9); color: white; border: none; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+.delete-preview:active { transform: scale(0.9); }
 
-    .toast { position: fixed; bottom: 30px; left: 20px; right: 20px; background: #1e293b; color: white; padding: 1rem; border-radius: 30px; text-align: center; font-weight: 500; opacity: 0; visibility: hidden; transition: 0.2s; z-index: 300; }
-    .toast.show { opacity: 1; visibility: visible; }
-    .d-none { display: none !important; }
-    hr { margin: 1.5rem 0; border: none; border-top: 1px solid #e2e8f0; }
+.toast { position: fixed; bottom: 30px; left: 20px; right: 20px; background: #1e293b; color: white; padding: 1rem; border-radius: 30px; text-align: center; font-weight: 500; opacity: 0; visibility: hidden; transition: 0.2s; z-index: 300; }
+.toast.show { opacity: 1; visibility: visible; }
+.d-none { display: none !important; }
+hr { margin: 1.5rem 0; border: none; border-top: 1px solid #e2e8f0; }
 
-    /* Variant Styles */
-    .variant-entry { display: flex; flex-direction: column; gap: 0.5rem; background: #f1f5f9; padding: 1.2rem; border-radius: 20px; margin-bottom: 1rem; border: 1px solid #e2e8f0; }
-    .variant-entry input { margin-bottom: 0.5rem; background: white; }
-    .remove-variant-btn { background: #fee2e2; border: none; padding: 0.8rem; border-radius: 18px; color: #ef4444; font-weight: 600; cursor: pointer; margin-top: 5px; width: 100%; }
-    .remove-variant-btn:active { background: #fecaca; }
+/* Variant Styles */
+.variant-entry { display: flex; flex-direction: column; gap: 0.5rem; background: #f1f5f9; padding: 1.2rem; border-radius: 20px; margin-bottom: 1rem; border: 1px solid #e2e8f0; }
+.variant-entry input { margin-bottom: 0.5rem; background: white; }
+.remove-variant-btn { background: #fee2e2; border: none; padding: 0.8rem; border-radius: 18px; color: #ef4444; font-weight: 600; cursor: pointer; margin-top: 5px; width: 100%; }
+.remove-variant-btn:active { background: #fecaca; }
 </style>
 </head>
 <body>
@@ -149,6 +149,7 @@
     </div>
 
 <!-- Admin Mobile View -->
+
 <div id="admin-view" class="admin-wrapper d-none">
     <!-- Header -->
     <div class="app-header">
@@ -158,6 +159,7 @@
     </div>
 
 <!-- Drawer (with new Category Products link) -->
+
 <div class="drawer" id="drawer">
     <div class="drawer-header">
         <h2>DuckShop</h2>
@@ -177,6 +179,7 @@
 <div class="drawer-overlay" id="drawerOverlay"></div>
 
 <!-- Main Content -->
+
 <main class="main-content" id="mainContent">
     <!-- Dashboard -->
     <section id="dashboard-page" class="page active">
@@ -190,83 +193,84 @@
         <div id="pending-orders-list" class="order-list"></div>
     </section>
 
-    <!-- Products -->
-    <section id="products-page" class="page">
-        <div class="content-header"><h2>Products</h2><button class="btn-add" id="add-product-btn"><i class="fas fa-plus"></i></button></div>
-        <div id="products-list" class="product-list"></div>
-    </section>
+<!-- Products -->
+<section id="products-page" class="page">
+    <div class="content-header"><h2>Products</h2><button class="btn-add" id="add-product-btn"><i class="fas fa-plus"></i></button></div>
+    <div id="products-list" class="product-list"></div>
+</section>
 
-    <!-- Categories -->
-    <section id="categories-page" class="page">
-        <div class="content-header"><h2>Categories</h2><button class="btn-add" id="add-category-btn"><i class="fas fa-plus"></i></button></div>
-        <div id="categories-list" class="category-list"></div>
-    </section>
+<!-- Categories -->
+<section id="categories-page" class="page">
+    <div class="content-header"><h2>Categories</h2><button class="btn-add" id="add-category-btn"><i class="fas fa-plus"></i></button></div>
+    <div id="categories-list" class="category-list"></div>
+</section>
 
-    <!-- Sub Categories -->
-    <section id="sub-categories-page" class="page">
-        <div class="content-header"><h2>Sub Categories</h2></div>
-        <div style="background:white; padding:1.5rem; border-radius:24px; border:1px solid #e2e8f0;">
-            <div class="form-group">
-                <label for="manage-sub-cat-parent">Select Parent Category</label>
-                <select id="manage-sub-cat-parent"><option value="">Select Category</option></select>
+<!-- Sub Categories -->
+<section id="sub-categories-page" class="page">
+    <div class="content-header"><h2>Sub Categories</h2></div>
+    <div style="background:white; padding:1.5rem; border-radius:24px; border:1px solid #e2e8f0;">
+        <div class="form-group">
+            <label for="manage-sub-cat-parent">Select Parent Category</label>
+            <select id="manage-sub-cat-parent"><option value="">Select Category</option></select>
+        </div>
+        
+        <div id="sub-cat-settings-area" class="d-none">
+            <div class="toggle-container">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="enable-sub-cats-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span style="font-weight:600;">Enable Sub-categories</span>
             </div>
-            
-            <div id="sub-cat-settings-area" class="d-none">
-                <div class="toggle-container">
-                    <label class="toggle-switch">
-                        <input type="checkbox" id="enable-sub-cats-toggle">
-                        <span class="slider"></span>
-                    </label>
-                    <span style="font-weight:600;">Enable Sub-categories</span>
-                </div>
-                <p style="font-size:0.85rem; color:#64748b; margin-bottom:1rem;">
-                    If enabled, products in this category <b>must</b> have a sub-category selected. If disabled, sub-categories will be hidden.
-                </p>
+            <p style="font-size:0.85rem; color:#64748b; margin-bottom:1rem;">
+                If enabled, products in this category <b>must</b> have a sub-category selected. If disabled, sub-categories will be hidden.
+            </p>
 
-                <div id="sub-cat-creation-area" class="d-none">
-                    <hr>
-                    <h4 style="margin-bottom:10px;">Manage List</h4>
-                    <div style="display:flex; gap:10px; margin-bottom:15px;">
-                        <input type="text" id="new-sub-cat-input" placeholder="New Sub Category Name" style="flex:1; padding:0.8rem; border-radius:12px; border:1px solid #ccc;">
-                        <button id="add-new-sub-cat-btn" class="btn btn-primary btn-sm">Add</button>
-                    </div>
-                    <div id="current-sub-cat-list"></div>
+            <div id="sub-cat-creation-area" class="d-none">
+                <hr>
+                <h4 style="margin-bottom:10px;">Manage List</h4>
+                <div style="display:flex; gap:10px; margin-bottom:15px;">
+                    <input type="text" id="new-sub-cat-input" placeholder="New Sub Category Name" style="flex:1; padding:0.8rem; border-radius:12px; border:1px solid #ccc;">
+                    <button id="add-new-sub-cat-btn" class="btn btn-primary btn-sm">Add</button>
                 </div>
+                <div id="current-sub-cat-list"></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- NEW: Category Products page -->
-    <section id="cat-products-page" class="page">
-        <div class="content-header"><h2>Products by Category</h2></div>
-        <div style="background:white; padding:1.5rem; border-radius:24px; border:1px solid #e2e8f0;">
-            <div class="form-group">
-                <label for="filter-category">Select Category</label>
-                <select id="filter-category"><option value="">Select Category</option></select>
-            </div>
-            <div class="form-group d-none" id="filter-subcat-group">
-                <label for="filter-subcategory">Sub Category</label>
-                <select id="filter-subcategory"><option value="">All Sub Categories</option></select>
-                <p style="font-size:0.8rem; color:#64748b;">Leave empty to show all products in this category (without sub‑category)</p>
-            </div>
-            <div id="filtered-products-list" class="product-list" style="margin-top:1rem;"></div>
+<!-- NEW: Category Products page -->
+<section id="cat-products-page" class="page">
+    <div class="content-header"><h2>Products by Category</h2></div>
+    <div style="background:white; padding:1.5rem; border-radius:24px; border:1px solid #e2e8f0;">
+        <div class="form-group">
+            <label for="filter-category">Select Category</label>
+            <select id="filter-category"><option value="">Select Category</option></select>
         </div>
-    </section>
+        <div class="form-group d-none" id="filter-subcat-group">
+            <label for="filter-subcategory">Sub Category</label>
+            <select id="filter-subcategory"><option value="">All Sub Categories</option></select>
+            <p style="font-size:0.8rem; color:#64748b;">Leave empty to show all products in this category (without sub‑category)</p>
+        </div>
+        <div id="filtered-products-list" class="product-list" style="margin-top:1rem;"></div>
+    </div>
+</section>
 
-    <!-- Orders -->
-    <section id="orders-page" class="page">
-        <div class="content-header"><h2>Orders</h2></div>
-        <div id="orders-list" class="orders-list"></div>
-    </section>
+<!-- Orders -->
+<section id="orders-page" class="page">
+    <div class="content-header"><h2>Orders</h2></div>
+    <div id="orders-list" class="orders-list"></div>
+</section>
 
-    <!-- Discounts -->
-    <section id="discounts-page" class="page">
-        <div class="content-header"><h2>Discounts</h2><button class="btn-add" id="add-discount-btn"><i class="fas fa-plus"></i></button></div>
-        <div id="discounts-list" class="discount-list"></div>
-    </section>
+<!-- Discounts -->
+<section id="discounts-page" class="page">
+    <div class="content-header"><h2>Discounts</h2><button class="btn-add" id="add-discount-btn"><i class="fas fa-plus"></i></button></div>
+    <div id="discounts-list" class="discount-list"></div>
+</section>
 </main>
 
 <!-- Product Modal -->
+
 <div id="product-modal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -275,91 +279,92 @@
         </div>
         <form id="product-form">
             <input type="hidden" id="product-id">
-            
+
+<div class="form-group">
+            <label for="product-category">Category</label>
+            <select id="product-category" required><option value="">Select</option></select>
+        </div>
+
+        <!-- DYNAMIC SUB CATEGORY SELECT -->
+        <div class="form-group d-none" id="product-sub-cat-group">
+            <label for="product-sub-category-select">Sub Category (Required)</label>
+            <select id="product-sub-category-select">
+                <option value="">Select Sub Category</option>
+            </select>
+        </div>
+
+        <!-- Veg/Non-Veg Tagging -->
+        <div class="form-group d-none" id="food-type-container">
+            <label for="product-food-type">Food Type</label>
+            <select id="product-food-type">
+                <option value="none">None</option>
+                <option value="veg">🟢 Veg</option>
+                <option value="non-veg">🔴 Non-Veg</option>
+            </select>
+        </div>
+
+        <!-- HIDDEN INPUT TO STORE URLS -->
+        <input type="hidden" id="product-image-urls-hidden" value="">
+        
+        <div class="form-group">
+            <label>Images</label>
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;">
+                <input type="file" id="product-image-upload" accept="image/*" multiple style="width:70%;">
+                <button type="button" id="upload-product-images-btn" class="btn btn-primary" style="width:28%; padding:0.5rem; font-size:0.9rem;">Upload</button>
+            </div>
+            <div id="product-image-previews" class="image-previews"></div>
+            <!-- AI Image Analyze Button -->
+            <button type="button" id="ai-analyze-image-btn" class="btn" style="background: linear-gradient(135deg, #10b981, #3b82f6); color: white; margin-top: 5px; font-size: 0.9rem; padding: 0.6rem;">
+                <i class="fas fa-eye"></i> &nbsp; Analyze Image (Multiple)
+            </button>
+        </div>
+
+        <div class="form-group">
+            <label for="product-name">Product Name</label>
+            <input type="text" id="product-name" required placeholder="Short & SEO friendly name">
+            <!-- AI Name/Desc Button -->
+            <button type="button" id="ai-generate-text-btn" class="ai-btn">
+                <i class="fas fa-magic"></i> AI Rewrite
+            </button>
+        </div>
+        
+        <div class="form-group">
+            <label for="product-description">Description</label>
+            <textarea id="product-description" rows="6" required placeholder="Detailed description..."></textarea>
+        </div>
+
+        <div class="form-check" style="display: flex; align-items: center; gap: 0.5rem; margin: 1rem 0; background: #eff6ff; padding: 10px; border-radius: 12px;">
+            <input type="checkbox" id="has-variants-checkbox" style="width: 20px; height: 20px;">
+            <label for="has-variants-checkbox" style="margin: 0; font-weight: 600;">Has variants (e.g., 500g, 1kg)</label>
+        </div>
+
+        <div id="simple-product-fields">
             <div class="form-group">
-                <label for="product-category">Category</label>
-                <select id="product-category" required><option value="">Select</option></select>
+                <label for="product-price">Selling Price (₹)</label>
+                <input type="number" id="product-price" min="0" step="0.01" required>
             </div>
-
-            <!-- DYNAMIC SUB CATEGORY SELECT -->
-            <div class="form-group d-none" id="product-sub-cat-group">
-                <label for="product-sub-category-select">Sub Category (Required)</label>
-                <select id="product-sub-category-select">
-                    <option value="">Select Sub Category</option>
-                </select>
-            </div>
-
-            <!-- Veg/Non-Veg Tagging -->
-            <div class="form-group d-none" id="food-type-container">
-                <label for="product-food-type">Food Type</label>
-                <select id="product-food-type">
-                    <option value="none">None</option>
-                    <option value="veg">🟢 Veg</option>
-                    <option value="non-veg">🔴 Non-Veg</option>
-                </select>
-            </div>
-
-            <!-- HIDDEN INPUT TO STORE URLS -->
-            <input type="hidden" id="product-image-urls-hidden" value="">
-            
             <div class="form-group">
-                <label>Images</label>
-                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:5px;">
-                    <input type="file" id="product-image-upload" accept="image/*" multiple style="width:70%;">
-                    <button type="button" id="upload-product-images-btn" class="btn btn-primary" style="width:28%; padding:0.5rem; font-size:0.9rem;">Upload</button>
-                </div>
-                <div id="product-image-previews" class="image-previews"></div>
-                <!-- AI Image Analyze Button -->
-                <button type="button" id="ai-analyze-image-btn" class="btn" style="background: linear-gradient(135deg, #10b981, #3b82f6); color: white; margin-top: 5px; font-size: 0.9rem; padding: 0.6rem;">
-                    <i class="fas fa-eye"></i> &nbsp; Analyze Image (Multiple)
-                </button>
+                <label for="product-original-price">Original Price (₹)</label>
+                <input type="number" id="product-original-price" min="0" step="0.01">
             </div>
-
             <div class="form-group">
-                <label for="product-name">Product Name</label>
-                <input type="text" id="product-name" required placeholder="Short & SEO friendly name">
-                <!-- AI Name/Desc Button -->
-                <button type="button" id="ai-generate-text-btn" class="ai-btn">
-                    <i class="fas fa-magic"></i> AI Rewrite
-                </button>
+                <label for="product-stock">Stock</label>
+                <input type="number" id="product-stock" min="0" required>
             </div>
-            
-            <div class="form-group">
-                <label for="product-description">Description</label>
-                <textarea id="product-description" rows="6" required placeholder="Detailed description..."></textarea>
-            </div>
+        </div>
 
-            <div class="form-check" style="display: flex; align-items: center; gap: 0.5rem; margin: 1rem 0; background: #eff6ff; padding: 10px; border-radius: 12px;">
-                <input type="checkbox" id="has-variants-checkbox" style="width: 20px; height: 20px;">
-                <label for="has-variants-checkbox" style="margin: 0; font-weight: 600;">Has variants (e.g., 500g, 1kg)</label>
-            </div>
-
-            <div id="simple-product-fields">
-                <div class="form-group">
-                    <label for="product-price">Selling Price (₹)</label>
-                    <input type="number" id="product-price" min="0" step="0.01" required>
-                </div>
-                <div class="form-group">
-                    <label for="product-original-price">Original Price (₹)</label>
-                    <input type="number" id="product-original-price" min="0" step="0.01">
-                </div>
-                <div class="form-group">
-                    <label for="product-stock">Stock</label>
-                    <input type="number" id="product-stock" min="0" required>
-                </div>
-            </div>
-
-            <div id="variant-product-fields" class="d-none">
-                <div id="variants-list"></div>
-                <button type="button" id="add-variant-btn" class="btn btn-primary" style="margin-top: 10px;">+ Add Variant</button>
-            </div>
-            <hr>
-            <button type="submit" class="btn btn-primary">Save Product</button>
-        </form>
-    </div>
+        <div id="variant-product-fields" class="d-none">
+            <div id="variants-list"></div>
+            <button type="button" id="add-variant-btn" class="btn btn-primary" style="margin-top: 10px;">+ Add Variant</button>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-primary">Save Product</button>
+    </form>
+</div>
 </div>
 
 <!-- Category Modal -->
+
 <div id="category-modal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -385,6 +390,7 @@
 </div>
 
 <!-- Other modals -->
+
 <div id="discount-modal" class="modal">
     <div class="modal-content">
         <div class="modal-header"><h2>Add Discount</h2><button class="close-modal-btn" data-target="#discount-modal">&times;</button></div>
@@ -430,16 +436,17 @@
         openRouterKey: "",
         textModel: "",
         imageModel: ""
+        // bgRemovalKey removed
     };
 
-    // Fallback defaults (used if no config exists)
+    // Fallback defaults (used if no config exists) – bgRemovalKey removed
     const DEFAULT_CONFIG = {
         openRouterKey: "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",
         textModel: "arcee-ai/trinity-large-preview:free",
         imageModel: "nvidia/nemotron-nano-12b-v2-vl:free"
     };
 
-    const IMGBB_API_KEY = '3d6e523beca3399d739ded007d03a61a';
+    const IMGBB_API_KEY = 'c7bdb79534bca63c35893752e57e27e4';
 
     // UI Elements
     const loginView = document.getElementById('login-view');
@@ -496,12 +503,13 @@
     };
     window.addEventListener('load', checkLogin);
 
-    // --- LOAD AI CONFIG FROM FIREBASE ---
+    // --- LOAD AI CONFIG FROM FIREBASE (bgRemovalKey removed) ---
     async function loadAIConfig() {
         try {
             const snapshot = await get(ref(db, 'config/ai'));
             if (snapshot.exists()) {
                 aiConfig = snapshot.val();
+                // No bgRemovalKey handling
             } else {
                 aiConfig = { ...DEFAULT_CONFIG };
                 await set(ref(db, 'config/ai'), aiConfig);
@@ -538,7 +546,131 @@
         return json.choices[0].message.content;
     }
 
-    // --- ROUTING & UI ---
+    // --- CONVERT image File to WebP Blob with 70% quality ---
+    function convertToWebP(file, quality = 0.7) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                canvas.toBlob((blob) => {
+                    if (blob) resolve(blob);
+                    else reject(new Error('WebP conversion failed'));
+                }, 'image/webp', quality);
+            };
+            img.onerror = reject;
+            img.src = URL.createObjectURL(file);
+        });
+    }
+
+    // --- Generic upload blob to ImgBB with filename ---
+    async function uploadImageToImgBB(blob, filename) {
+        const fd = new FormData();
+        fd.append('image', blob, filename);
+        const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, { method: 'POST', body: fd });
+        if (!res.ok) throw new Error('ImgBB upload failed');
+        const json = await res.json();
+        return json.data.url;
+    }
+
+    // --- MODIFIED addPreview (BG removal button removed) ---
+    function addPreview(container, fileUrl, isFileObject = false, onDeleteCallback) {
+        const item = document.createElement('div');
+        item.className = 'preview-item';
+        
+        const img = document.createElement('img');
+        if (isFileObject) {
+            const reader = new FileReader();
+            reader.onload = e => img.src = e.target.result;
+            reader.readAsDataURL(fileUrl);
+        } else {
+            img.src = fileUrl;
+        }
+        item.appendChild(img);
+
+        // Delete button only
+        const del = document.createElement('button');
+        del.className = 'delete-preview';
+        del.innerHTML = '<i class="fas fa-times"></i>';
+        del.type = 'button'; 
+        del.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            item.remove();
+            if(onDeleteCallback) onDeleteCallback();
+            updateProductUrls(); // update hidden field after deletion
+        });
+        item.appendChild(del);
+
+        container.appendChild(item);
+        return item;
+    }
+
+    function updateProductUrls() {
+        const urls = [];
+        document.querySelectorAll('#product-image-previews img').forEach(img => {
+            if (img.src.startsWith('http')) urls.push(img.src);
+        });
+        document.getElementById('product-image-urls-hidden').value = urls.join(',');
+    }
+
+    // --- UPLOAD for product images (with WebP conversion) ---
+    document.getElementById('upload-product-images-btn').addEventListener('click', async () => {
+        const files = document.getElementById('product-image-upload').files;
+        if(!files.length) return;
+        
+        const container = document.getElementById('product-image-previews');
+        const uploadBtn = document.getElementById('upload-product-images-btn');
+        uploadBtn.disabled = true;
+        uploadBtn.textContent = 'Uploading...';
+
+        for(let f of files) {
+            try {
+                // Convert to WebP 70% quality
+                const webpBlob = await convertToWebP(f, 0.7);
+                // Generate webp filename
+                const baseName = f.name.replace(/\.[^/.]+$/, '') + '.webp';
+                const url = await uploadImageToImgBB(webpBlob, baseName);
+                addPreview(container, url, false, null);
+            } catch(e) { 
+                console.error(e);
+                showToast('Upload failed: ' + e.message, 'error'); 
+            }
+        }
+        
+        updateProductUrls();
+        uploadBtn.disabled = false;
+        uploadBtn.textContent = 'Upload';
+        document.getElementById('product-image-upload').value = '';
+        showToast('Images Uploaded');
+    });
+
+    // --- UPLOAD for category image (with WebP conversion) ---
+    document.getElementById('upload-category-image-btn').addEventListener('click', async () => {
+        const file = document.getElementById('category-image-upload').files[0];
+        if(!file) return;
+        
+        try {
+            const webpBlob = await convertToWebP(file, 0.7);
+            const baseName = file.name.replace(/\.[^/.]+$/, '') + '.webp';
+            const url = await uploadImageToImgBB(webpBlob, baseName);
+            
+            const container = document.getElementById('category-image-preview');
+            container.innerHTML = '';
+            addPreview(container, url, false, () => {
+                document.getElementById('category-image-hidden').value = '';
+            });
+            document.getElementById('category-image-hidden').value = url;
+            showToast('Image Uploaded');
+        } catch(e) {
+            showToast('Upload failed: ' + e.message, 'error');
+        }
+    });
+
+    // --- ROUTING & UI (unchanged) ---
     const handleRouting = () => {
         const hash = window.location.hash || '#dashboard';
         pages.forEach(p => p.classList.toggle('active', `#${p.id.replace('-page','')}` === hash));
@@ -548,7 +680,6 @@
         drawer.classList.remove('open');
         drawerOverlay.classList.remove('show');
 
-        // If we switch to cat-products page, refresh the filtered list
         if (hash === '#cat-products') {
             renderFilteredProducts();
         }
@@ -558,14 +689,13 @@
     closeDrawer.addEventListener('click', () => { drawer.classList.remove('open'); drawerOverlay.classList.remove('show'); });
     drawerOverlay.addEventListener('click', () => { drawer.classList.remove('open'); drawerOverlay.classList.remove('show'); });
 
-    // --- FIREBASE DATA HANDLING ---
+    // --- FIREBASE DATA HANDLING (unchanged) ---
     const listenToData = (path, cb) => onValue(ref(db, path), (s) => cb(s.val() || {}));
 
     const initializeAppState = () => {
         listenToData('products', (products) => {
             currentProducts = products;
             renderProductsList(products);
-            // if cat-products page is active, update filtered view
             if (document.getElementById('cat-products-page').classList.contains('active')) {
                 renderFilteredProducts();
             }
@@ -628,7 +758,7 @@
         const options = '<option value="">Select Category</option>' + Object.entries(cats).map(([id, c]) => `<option value="${id}">${c.name}</option>`).join('');
         document.getElementById('product-category').innerHTML = options;
         document.getElementById('manage-sub-cat-parent').innerHTML = options;
-        document.getElementById('filter-category').innerHTML = options; // for cat-products page
+        document.getElementById('filter-category').innerHTML = options;
     };
 
     // --- SUB CATEGORY MANAGEMENT (unchanged) ---
@@ -736,7 +866,6 @@
                 cancelEdit();
                 return;
             }
-            // Check uniqueness
             const snap = await get(ref(db, `subCategories/${catId}`));
             if (snap.exists()) {
                 const existing = Object.entries(snap.val()).find(([id, data]) => data.name === newName && id !== subId);
@@ -745,9 +874,7 @@
                     return;
                 }
             }
-            // Update Firebase
             await update(ref(db, `subCategories/${catId}/${subId}`), { name: newName });
-            // Update all products with this category and old sub-category name
             await updateProductSubCategory(catId, currentName, newName);
             showToast('Updated');
             loadSubCategories(catId);
@@ -816,7 +943,7 @@
         }
     };
 
-    // --- PRODUCT MODAL LOGIC ---
+    // --- PRODUCT MODAL LOGIC (unchanged) ---
     const prodCatSelect = document.getElementById('product-category');
     const prodSubCatGroup = document.getElementById('product-sub-cat-group');
     const prodSubCatSelect = document.getElementById('product-sub-category-select');
@@ -852,7 +979,7 @@
         }
     });
 
-    // --- AI FUNCTIONS ---
+    // --- AI FUNCTIONS (unchanged) ---
     document.getElementById('ai-generate-text-btn').addEventListener('click', async function() {
         const name = document.getElementById('product-name').value;
         if (!name) return showToast('Enter name first', 'error');
@@ -861,7 +988,7 @@
             const prompt = `You are an expert e-commerce copywriter.
             1. Product Name: Rewrite "${name}" to be **concise, professional, and SEO-friendly** (Max 6-10 words). strictly NO long titles.
             2. Description: Write an **extremely detailed, long-form, and persuasive** product description. Include formatted sections using HTML tags (<p>, <ul>, <li>, <strong>) for Features, Benefits, Usage, and Specifications.
-            Output ONLY valid JSON format: {"name": "...", "description": "..."}`;
+            Output ONLY valid JSON: {"name": "...", "description": "..."}`;
             
             const res = await callAI(prompt, 'text');
             const jsonBlock = res.match(/\{[\s\S]*\}/);
@@ -907,88 +1034,7 @@
         btn.disabled = false;
     });
 
-    // --- UPLOAD LOGIC ---
-    async function uploadToImgBB(file) {
-        const fd = new FormData(); fd.append('image', file);
-        const res = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, { method:'POST', body:fd });
-        return (await res.json()).data.url;
-    }
-
-    function addPreview(container, fileUrl, isFileObject = false, onDeleteCallback) {
-        const item = document.createElement('div');
-        item.className = 'preview-item';
-        
-        const img = document.createElement('img');
-        if (isFileObject) {
-            const reader = new FileReader();
-            reader.onload = e => img.src = e.target.result;
-            reader.readAsDataURL(fileUrl);
-        } else {
-            img.src = fileUrl;
-        }
-        item.appendChild(img);
-
-        const del = document.createElement('button');
-        del.className = 'delete-preview';
-        del.innerHTML = '<i class="fas fa-times"></i>';
-        del.type = 'button'; 
-        
-        del.addEventListener('click', (e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            item.remove();
-            if(onDeleteCallback) onDeleteCallback();
-        });
-        
-        item.appendChild(del);
-        container.appendChild(item);
-        return item;
-    }
-
-    function updateProductUrls() {
-        const urls = [];
-        document.querySelectorAll('#product-image-previews img').forEach(img => {
-            if (img.src.startsWith('http')) urls.push(img.src);
-        });
-        document.getElementById('product-image-urls-hidden').value = urls.join(',');
-    }
-
-    document.getElementById('upload-product-images-btn').addEventListener('click', async () => {
-        const files = document.getElementById('product-image-upload').files;
-        if(!files.length) return;
-        
-        const container = document.getElementById('product-image-previews');
-        const uploadBtn = document.getElementById('upload-product-images-btn');
-        uploadBtn.disabled = true;
-        uploadBtn.textContent = 'Uploading...';
-
-        for(let f of files) {
-            try {
-                const url = await uploadToImgBB(f);
-                addPreview(container, url, false, updateProductUrls);
-            } catch(e) { showToast('Upload failed', 'error'); }
-        }
-        
-        updateProductUrls();
-        uploadBtn.disabled = false;
-        uploadBtn.textContent = 'Upload';
-        document.getElementById('product-image-upload').value = '';
-        showToast('Images Uploaded');
-    });
-
-    document.getElementById('upload-category-image-btn').addEventListener('click', async () => {
-        const file = document.getElementById('category-image-upload').files[0];
-        if(!file) return;
-        const url = await uploadToImgBB(file);
-        document.getElementById('category-image-preview').innerHTML = '';
-        addPreview(document.getElementById('category-image-preview'), url, false, () => {
-            document.getElementById('category-image-hidden').value = '';
-        });
-        document.getElementById('category-image-hidden').value = url;
-        showToast('Image Uploaded');
-    });
-
-    // --- FILTERED PRODUCTS (Category Products page) ---
+    // --- FILTERED PRODUCTS (Category Products page) unchanged ---
     const filterCatSelect = document.getElementById('filter-category');
     const filterSubcatGroup = document.getElementById('filter-subcat-group');
     const filterSubcatSelect = document.getElementById('filter-subcategory');
@@ -1024,14 +1070,13 @@
             filteredContainer.innerHTML = '<p style="text-align:center; color:#888;">Please select a category</p>';
             return;
         }
-        const subCat = filterSubcatSelect.value || null; // empty means no subcat filter (include products with no subcat or any subcat? We'll treat empty as "all products in this category regardless of subcat")
+        const subCat = filterSubcatSelect.value || null;
 
         const filtered = Object.entries(currentProducts).filter(([id, p]) => {
             if (p.categoryId !== catId) return false;
             if (subCat) {
                 return p.subCategory === subCat;
             }
-            // if subCat is empty, include all products of this category (with or without subcat)
             return true;
         });
 
@@ -1055,14 +1100,12 @@
         }
     }
 
-    // Attach edit/delete listeners for filtered products container
     filteredContainer.addEventListener('click', async (e) => {
         const btn = e.target.closest('.btn-edit');
         if (btn) {
             const id = btn.dataset.id;
             const p = currentProducts[id];
             
-            // Populate product modal (same as main edit)
             document.getElementById('product-id').value = id;
             document.getElementById('product-name').value = p.name;
             document.getElementById('product-description').value = p.description;
@@ -1111,7 +1154,7 @@
             document.getElementById('product-image-urls-hidden').value = urls.join(',');
             
             urls.forEach(url => {
-                addPreview(container, url, false, updateProductUrls);
+                addPreview(container, url, false, null);
             });
 
             document.getElementById('modal-product-title').textContent = 'Edit Product';
@@ -1305,7 +1348,7 @@
             document.getElementById('product-image-urls-hidden').value = urls.join(',');
             
             urls.forEach(url => {
-                addPreview(container, url, false, updateProductUrls);
+                addPreview(container, url, false, null);
             });
 
             document.getElementById('modal-product-title').textContent = 'Edit Product';
