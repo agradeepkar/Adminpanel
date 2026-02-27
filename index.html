@@ -446,7 +446,7 @@ hr { margin: 1.5rem 0; border: none; border-top: 1px solid #e2e8f0; }
         imageModel: "nvidia/nemotron-nano-12b-v2-vl:free"
     };
 
-    const IMGBB_API_KEY = 'c7bdb79534bca63c35893752e57e27e4';
+    const IMGBB_API_KEY = '3d6e523beca3399d739ded007d03a61a';
 
     // UI Elements
     const loginView = document.getElementById('login-view');
@@ -1359,6 +1359,39 @@ hr { margin: 1.5rem 0; border: none; border-top: 1px solid #e2e8f0; }
         if(delBtn && confirm('Delete?')) {
             await remove(ref(db, `products/${delBtn.dataset.id}`));
             showToast('Deleted');
+        }
+    });
+
+    // --- NEW: Category Edit/Delete Listeners ---
+    document.getElementById('categories-list').addEventListener('click', async (e) => {
+        const btn = e.target.closest('.btn-edit');
+        if (btn) {
+            const id = btn.dataset.id;
+            const cat = currentCategories[id];
+            if (!cat) return;
+            
+            document.getElementById('category-id').value = id;
+            document.getElementById('category-name').value = cat.name;
+            document.getElementById('category-image-hidden').value = cat.imageUrl || '';
+            
+            // Clear and set preview
+            const previewContainer = document.getElementById('category-image-preview');
+            previewContainer.innerHTML = '';
+            if (cat.imageUrl) {
+                addPreview(previewContainer, cat.imageUrl, false, () => {
+                    document.getElementById('category-image-hidden').value = '';
+                });
+            }
+            
+            document.getElementById('modal-category-title').textContent = 'Edit Category';
+            document.getElementById('category-modal').classList.add('open');
+        }
+        
+        const delBtn = e.target.closest('.btn-delete');
+        if (delBtn && confirm('Delete this category? This will not delete products but may affect them.')) {
+            const id = delBtn.dataset.id;
+            await remove(ref(db, `categories/${id}`));
+            showToast('Category deleted');
         }
     });
 
